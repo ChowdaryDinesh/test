@@ -1,0 +1,51 @@
+[{
+    "containerDefinitions": [ 
+       { 
+          "name": "helloapp",
+          "essential": true,
+
+          "image": "dkr.ecr.region.amazonaws.com/testrepodi:1.0",
+          "logConfiguration": { 
+             "logDriver": "awslogs",
+             "options": { 
+                "awslogs-group" : "/ecs/fargate-task-definition",
+                "awslogs-region": "us-east-1",
+                "awslogs-stream-prefix": "ecs"
+             }
+          },
+         
+          "portMappings": [ 
+             { 
+                "containerPort": 8000,
+                "hostPort": 8000,
+                "protocol": "tcp"
+             }
+          ]
+       }
+    ],
+    "portMappings": [ 
+             { 
+                "containerPort": 8000,
+                "hostPort": 8000,
+                "protocol": "tcp"
+             }
+   ],
+   "networkConfiguration": {
+      "awsvpcConfiguration": {
+          "assignPublicIp": "DISABLED"
+      }
+  },
+    "image": "dkr.ecr.region.amazonaws.com/testrepodi:1.0",
+    "name": "helloapp",
+    "cpu": 128,
+    "executionRoleArn": "arn:aws:iam::${var.accountid}:role/ecsTaskExecutionRole",
+    "family": "test",
+    "memory": 128,
+    "networkMode": "awsvpc",
+    "runtimePlatform": {
+         "operatingSystemFamily": "LINUX"
+     },
+    "requiresCompatibilities": [ 
+        "FARGATE" 
+     ]
+ }]

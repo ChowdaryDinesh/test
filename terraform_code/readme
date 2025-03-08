@@ -1,0 +1,9 @@
+1. Create vpc and subnets
+    vpc
+    subnet1, subnet2 
+    igw 
+    route table (public) linked with igw 
+    rpoute table without igw
+    route table association to public subnet with pub route table 
+    route table association to private subnet with pri route table
+    eip allocate and associate
